@@ -42,7 +42,8 @@ const Camera = props => {
             ref={rnCameraRef => refCamera.current = rnCameraRef}
             type={RNCamera.Constants.Type.back}
             flashMode={RNCamera.Constants.FlashMode.on}
-            barcodeTypes={isBarcodeRead ? [] : defaultBarcodeTypes}
+            // barcodeTypes={isBarcodeRead ? [] : defaultBarcodeTypes}
+            barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
             onBarCodeRead={onBarcodeRead}
             androidCameraPermissionOptions={{
                 title: 'Permission to use camera',
