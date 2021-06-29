@@ -4,13 +4,41 @@ import { RNCamera } from 'react-native-camera'
 import BarcodeMask from 'react-native-barcode-mask';
 const Camera = props => {
     const refCamera = useRef();
+    const [isBarcodeRead, setIsBarcodeRead] = useState(false);
+    const [barcodeType, setBarcodeType] = useState('');
+    const [barcodeValue, setBarcodeValue] = useState('');
+    const defaultBarcodeTypes = [];
 
-const barcodeRecognized = ({ barcodes }) => {
-    barcodes.forEach(barcode => Alert.alert(barcode.data))
-
-  };
-  const defaultBarcodeTypes = [];
-
+ 
+    useEffect(() => {
+       if (isBarcodeRead) {
+           Alert.alert(
+              barcodeType, 
+              barcodeValue, 
+              [
+                 {
+                     text: 'OK',
+                     onPress: () => {
+                         // reset everything
+                         setIsBarcodeRead(false);
+                         setBarcodeType('');
+                         setBarcodeValue('');
+                     }
+                 }
+              ]
+           );
+       }
+ 
+    }, [isBarcodeRead, barcodeType, barcodeValue]);
+ 
+    const onBarcodeRead = event => {
+       if (!isBarcodeRead) {
+          setIsBarcodeRead(true);
+          setBarcodeType(event.type);
+          setBarcodeValue(event.data);
+       }
+    }
+ 
 
     return (
         <>
@@ -19,8 +47,9 @@ const barcodeRecognized = ({ barcodes }) => {
                     flex: 1,
                     backgroundColor: 'pink'
                 }}
-                onGoogleVisionBarcodesDetected={barcodeRecognized}
-
+                // onGoogleVisionBarcodesDetected={barcodeRecognized}
+                onBarCodeRead={onBarcodeRead} 
+                barcodeTypes={isBarcodeRead ? [] : defaultBarcodeTypes}
                 ref={rnCameraRef => refCamera.current = rnCameraRef}
                 type={RNCamera.Constants.Type.back}
                 flashMode={RNCamera.Constants.FlashMode.on}
