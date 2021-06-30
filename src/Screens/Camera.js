@@ -9,36 +9,36 @@ const Camera = props => {
     const [barcodeValue, setBarcodeValue] = useState('');
     const defaultBarcodeTypes = [];
 
- 
+
     useEffect(() => {
-       if (isBarcodeRead) {
-           Alert.alert(
-              barcodeType, 
-              barcodeValue, 
-              [
-                 {
-                     text: 'OK',
-                     onPress: () => {
-                         // reset everything
-                         setIsBarcodeRead(false);
-                         setBarcodeType('');
-                         setBarcodeValue('');
-                     }
-                 }
-              ]
-           );
-       }
- 
+        if (isBarcodeRead) {
+            Alert.alert(
+                barcodeType,
+                barcodeValue,
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => {
+                            // reset everything
+                            setIsBarcodeRead(false);
+                            setBarcodeType('');
+                            setBarcodeValue('');
+                        }
+                    }
+                ]
+            );
+        }
+
     }, [isBarcodeRead, barcodeType, barcodeValue]);
- 
+
     const onBarcodeRead = event => {
-       if (!isBarcodeRead) {
-          setIsBarcodeRead(true);
-          setBarcodeType(event.type);
-          setBarcodeValue(event.data);
-       }
+        if (!isBarcodeRead) {
+            setIsBarcodeRead(true);
+            setBarcodeType(event.type);
+            setBarcodeValue(event.data);
+        }
     }
- 
+
 
     return (
         <>
@@ -48,7 +48,7 @@ const Camera = props => {
                     backgroundColor: 'pink'
                 }}
                 // onGoogleVisionBarcodesDetected={barcodeRecognized}
-                onBarCodeRead={onBarcodeRead} 
+                onBarCodeRead={onBarcodeRead}
                 barcodeTypes={isBarcodeRead ? [] : defaultBarcodeTypes}
                 ref={rnCameraRef => refCamera.current = rnCameraRef}
                 type={RNCamera.Constants.Type.back}
@@ -60,7 +60,7 @@ const Camera = props => {
                     buttonNegative: 'Cancel',
                 }}
             >
-
+                <BarcodeMask />
             </RNCamera>
 
         </>

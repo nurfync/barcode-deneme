@@ -28,9 +28,13 @@ const StackNavigation = props => {
                 name="camera-screen"
                 component={Camera}
                 options={{
-                    headerShown:false   
-                  
-                   
+                    headerTransparent:true,
+                    title:"",
+                    headerLeftContainerStyle:{
+                        paddingLeft:10,
+                        height:50,           
+                        
+                    }        
                      }}
             /> 
            
