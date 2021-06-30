@@ -60,7 +60,7 @@ const Camera = props => {
                     buttonNegative: 'Cancel',
                 }}
             >
-                <BarcodeMask />
+                <BarcodeMask showAnimatedLine={true} outerMaskOpacity={0.85}/>
             </RNCamera>
 
         </>

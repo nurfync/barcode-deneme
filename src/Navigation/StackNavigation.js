@@ -30,6 +30,7 @@ const StackNavigation = props => {
                 options={{
                     headerTransparent:true,
                     title:"",
+                    headerTintColor:'white',
                     headerLeftContainerStyle:{
                         paddingLeft:10,
                         height:50,           
