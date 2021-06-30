@@ -49,7 +49,7 @@ const Camera = props => {
                 }}
                 // onGoogleVisionBarcodesDetected={barcodeRecognized}
                 onBarCodeRead={onBarcodeRead}
-                barcodeTypes={isBarcodeRead ? [] : defaultBarcodeTypes}
+                barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
                 ref={rnCameraRef => refCamera.current = rnCameraRef}
                 type={RNCamera.Constants.Type.back}
                 flashMode={RNCamera.Constants.FlashMode.on}
@@ -60,7 +60,6 @@ const Camera = props => {
                     buttonNegative: 'Cancel',
                 }}
             >
-                <BarcodeMask showAnimatedLine={true} outerMaskOpacity={0.85}/>
             </RNCamera>
 
         </>
