@@ -4,41 +4,38 @@ import Anasayfa from '../Screens/Anasayfa';
 import Camera from '../Screens/Camera';
 
 
-
 const AppStack = createStackNavigator();
 
 const StackNavigation = props => {
-
-    
     return (
         <AppStack.Navigator>
-           <AppStack.Screen
+            <AppStack.Screen
                 name="anasayfa-screen"
                 component={Anasayfa}
                 options={{
-                    title:'Anasayfa',
+                    title: 'Anasayfa',
                     headerTitleAlign: 'center',
-             
+
                     // headerBackTitleVisible: false,
-                   
-                     }}
-            /> 
-        
-        <AppStack.Screen
+
+                }}
+            />
+
+            <AppStack.Screen
                 name="camera-screen"
                 component={Camera}
                 options={{
-                    headerTransparent:true,
-                    title:"",
-                    headerTintColor:'white',
-                    headerLeftContainerStyle:{
-                        paddingLeft:10,
-                        height:50,           
-                        
-                    }        
-                     }}
-            /> 
-           
+                    headerTransparent: true,
+                    title: "",
+                    headerTintColor: 'white',
+                    headerLeftContainerStyle: {
+                        paddingLeft: 10,
+                        height: 50,
+
+                    }
+                }}
+            />
+
         </AppStack.Navigator>
     );
 };
