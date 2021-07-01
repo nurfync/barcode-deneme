@@ -16,10 +16,7 @@ import { RNCamera } from 'react-native-camera';
 
 class Camera extends Component {
   onSuccess = e => {
-
-    // alert(e.data  );
-
-    // this.scanner.reactivate();       
+     
     Alert.alert(
         "QR CODE",
         e.data ,
@@ -29,11 +26,7 @@ class Camera extends Component {
             onPress: () => this.scanner.reactivate(),
           }
         ]
-      );
-                
-          
-   
-    
+      );    
   };
 
   render() {
