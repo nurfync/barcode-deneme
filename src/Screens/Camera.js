@@ -52,7 +52,7 @@ const Camera = props => {
                 barCodeTypes={[RNCamera.Constants.BarCodeType.qr]}
                 ref={rnCameraRef => refCamera.current = rnCameraRef}
                 type={RNCamera.Constants.Type.back}
-                flashMode={RNCamera.Constants.FlashMode.on}
+                flashMode={RNCamera.Constants.FlashMode.off}
                 androidCameraPermissionOptions={{
                     title: 'Permission to use camera',
                     message: 'We need your permission to use your camera',
@@ -60,6 +60,7 @@ const Camera = props => {
                     buttonNegative: 'Cancel',
                 }}
             >
+              <BarcodeMask></BarcodeMask>
             </RNCamera>
 
         </>
